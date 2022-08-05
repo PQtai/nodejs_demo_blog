@@ -1,0 +1,18 @@
+@import '_variables';
+
+header {
+    > h1 {
+        color: green;
+        background-color: $background-color;
+    }
+}
+footer {
+    > h1 {
+        color: black;
+    }
+}
+.container {
+    > h1 {
+        color: red;
+    }
+}
