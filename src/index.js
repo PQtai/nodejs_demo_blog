@@ -4,6 +4,7 @@ import {engine} from 'express-handlebars';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import routes from './routes/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();
@@ -19,13 +20,8 @@ app.engine('hbs', engine({
 }));
 app.set('view engine', 'hbs');
 app.set('views',  path.join(__dirname, 'resources/views'));
-// reouter
-app.get('/', (req, res) => {
-  res.render('home')
-});
-app.get('/news', (req, res) => {
-  res.render('news')
-});
+// router
+routes(app);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
