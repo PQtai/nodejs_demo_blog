@@ -5,6 +5,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import routes from './routes/index.js';
+import db from './config/db/index.js';
+// connect db
+db.connect();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();
@@ -19,9 +22,9 @@ app.engine('hbs', engine({
   extname: '.hbs',
 }));
 app.set('view engine', 'hbs');
-app.set('views',  path.join(__dirname, 'resources/views'));
+app.set('views',  path.join(__dirname, 'resources' , 'views'));
 // router
 routes(app);
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 });
